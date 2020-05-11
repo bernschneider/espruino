@@ -28,9 +28,6 @@
    function getTemperature() {
       Puck.eval("E.getTemperature()", function(v) {
         document.getElementById("temp").innerHTML = v;
-        setTimeout(function() {
-          getTemperature();
-        }, 250);
       });
     }
    </script>

@@ -26,8 +26,8 @@
   </pre>
   <script type="text/javascript">
    function getTemperature() {
-      Puck.eval("E.getTemperature()", function(v) {
-        document.getElementById("temp").innerHTML = v;
+      Puck.eval("getdata()", function(data) {
+        document.getElementById("temp").innerHTML = data.temp.toFixed(2) + "C";
       });
     }
    </script>

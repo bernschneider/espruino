@@ -6,7 +6,7 @@
  </head>
  <body>
   <script src="https://www.puck-js.com/puck.js"></script>
-  <h2>Kommunikation mit Espruino-Gerät 2</h2>
+  <h2>Kommunikation mit Espruino-Gerät 3</h2>
   <pre>Peter Bernscheider</pre>
   <pre>
     <button onclick="Puck.setTime()">Set Time</button>
@@ -26,8 +26,8 @@
   </pre>
   <script type="text/javascript">
    function getTemperature() {
-      Puck.eval("getdata()", function(data) {
-        document.getElementById("temp").innerHTML = data.temp.toFixed(2) + "C";
+        Puck.eval("getdata()", function(data) {
+        document.getElementById("temp").innerHTML = data.temp.toFixed(2) + "C " + data.pressure.toFixed(0) + "Bar" ;
       });
     }
    </script>

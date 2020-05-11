@@ -11,6 +11,11 @@
   <pre>
     <button onclick="Puck.setTime()">Set Time</button>
   </pre>
+   <pre>
+    <button onclick="getTemperature">Get Temperature</button>
+    <span id="temp"></span>
+  </pre>
+  <pre>
   <pre>
     <button onclick="Puck.write('LED1.set();\n');">LED Rot an!</button>
     <button onclick="Puck.write('LED1.reset();\n');">LED Rot aus!</button>
@@ -19,5 +24,15 @@
     <button onclick="Puck.write('LED2.set();\n');">LED Grün an!</button>
     <button onclick="Puck.write('LED2.reset();\n');">LED Grün aus!</button>
   </pre>
+  <script type="text/javascript">
+   function getTemperature() {
+      Puck.eval("E.getTemperature()", function(v) {
+        document.getElementById("temp").innerHTML = v;
+        setTimeout(function() {
+          getLightTemperature();
+        }, 250);
+      });
+    }
+   </script>
  </body>
 </html>

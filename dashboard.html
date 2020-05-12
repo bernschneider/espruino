@@ -17,7 +17,7 @@
       elements.temp.setValue(j.temp);
       for (var i=0;i<history.length-1;i++) history[i] = history[i+1];
       history[history.length-1] = j.temp * 100;
-      elements.hist.setData(history);
+      elements.hist.setData(JSON.stringify(history));
     } catch(e) {
       console.log("Received: ",line);
     }

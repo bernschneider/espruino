@@ -15,8 +15,8 @@
       var j = JSON.parse(line);
       console.log("Received JSON: ",j);
       elements.temp.setValue(j.temp);
-      for (var i=0;i<history.length-1;i++) history[i] = history[i+1];
-      history[history.length-1] = j.temp * 100;
+      for (var i=0;i<99;i++) history[i] = history[i+1];
+      history[99] = j.temp * 100;
       elements.hist.setData(history);
     } catch(e) {
       console.log("Received: ",line);

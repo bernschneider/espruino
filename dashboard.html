@@ -55,7 +55,7 @@
   var elements = {
     heading :  TD.label({x:10,y:10,width:600,height:50,label:"Peters Dashboard"}),
     temp :     TD.gauge({x:10,y:70,width:180,height:180,label:"Temperature",value:0,min:-20,max:45}),
-    pres :     TD.gauge({x:10,y:260,width:180,height:180,label:"Temperature",value:0,min:-20,max:45}),
+    pres :     TD.gauge({x:10,y:260,width:180,height:180,label:"Pressure",value:0,min:980,max:1020}),
     temphist : TD.graph({x:200,y:70,width:400,height:180,label:"Temp History"}),
     preshist : TD.graph({x:200,y:260,width:400,height:180,label:"Pressure History"}),
     modal:     TD.modal({x:10,y:10,width:190,height:430,label:"Click to connect",onchange:connectDevice})

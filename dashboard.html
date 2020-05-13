@@ -8,17 +8,21 @@
   <script src="https://espruino.github.io/TinyDash/tinydash.js"></script>
   <script src="https://www.puck-js.com/puck.js"></script>  
   <script>
-  var history = new Int16Array(100); // wird nicht korrekt angezeigt :-(
-  for (var i=0;i<100;i++) history[i] = 0; 
+  var temphist = new Int16Array(60); for (var i=0;i<100;i++) temphist[i] = 20.0; 
+  var preshist = new Int16Array(60); for (var i=0;i<100;i++) preshist[i] = 1000.0; 
   // Called when we get a line of data - updates the light color
   function onLine(line) {
     try {
       var j = JSON.parse(line);
       console.log("Received JSON: ",j);
       elements.temp.setValue(j.temp);
-      for (var i=0;i<99;i++) history[i] = history[i+1];
-      history[99] = j.temp;
-      elements.hist.setData(history);
+      for (var i=0;i<59;i++) temphist[i] = temphist[i+1];
+      temphist[59] = j.temp;
+      elements.hist.setData(temphist);
+      elements.pres.setValue(j.pressure);
+      for (var i=0;i<59;i++) preshist[i] = preshist[i+1];
+      preshist[59] = j.temp;
+      elements.hist.setData(preshist);
     } catch(e) {
       console.log("Received: ",line);
     }
@@ -52,6 +56,7 @@
     heading : TD.label({x:10,y:10,width:190,height:50,label:"My Dashboard"}),
     temp : TD.gauge({x:10,y:70,width:190,height:220,label:"Temperature",value:0,min:-20,max:45}),
     hist : TD.graph({x:210,y:10,width:400,height:180,label:"Temp History"}),
+    pres : TD.graph({x:210,y:190,width:400,height:180,label:"Temp History"}),
     modal: TD.modal({x:10,y:10,width:190,height:430,label:"Click to connect",onchange:connectDevice})
   };
   for (var i in elements)

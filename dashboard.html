@@ -21,7 +21,7 @@
       elements.temphist.setData(temphist);
       elements.pres.setValue(j.pressure);
       for (var i=0;i<59;i++) preshist[i] = preshist[i+1];
-      preshist[59] = j.temp;
+      preshist[59] = j.pressure;
       elements.preshist.setData(preshist);
     } catch(e) {
       console.log("Received: ",line);
